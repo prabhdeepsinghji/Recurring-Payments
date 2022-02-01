@@ -1,0 +1,25 @@
+.form-fields {
+  padding: 10pt;
+  /* align-self: center; */
+  width: 100%;
+}
+.form-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  /* border: 2px solid red; */
+
+  width: 565px;
+  margin: 0 auto;
+  margin-top: 4em;
+}
+
+.form-block h1 {
+  /* text-align: left; */
+  /* margin-left: -60px; */
+  font-size: 2.6em;
+  color: #1976d2;
+  letter-spacing: 2px;
+  margin-bottom: 0.6em;
+}
