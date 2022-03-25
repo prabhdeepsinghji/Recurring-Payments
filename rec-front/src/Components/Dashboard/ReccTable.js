@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
@@ -52,7 +52,7 @@ const columns = [
 function ReccTable(props) {
   const dispatch = useDispatch();
   const [deleteRecc, setDeleteRecc] = useState(-1);
-  const data = props.data;
+  // const data = props.data;
 
   const handleCellClick = (e) => {
     setDeleteRecc(e.id);
@@ -60,15 +60,18 @@ function ReccTable(props) {
   const handleCancelRecc = () => {
     if (deleteRecc !== -1) {
       dispatch(cancelRecc(props.token, deleteRecc));
-      dispatch(showRecurring(props.token));
     }
   };
+  useEffect(() => {
+    dispatch(showRecurring(props.token));
+  });
+
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
         onCellClick={handleCellClick}
         key={(row) => row.reccId}
-        rows={data}
+        rows={props.data}
         columns={columns}
         getRowId={(row) => row.reccId}
         pageSize={5}

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./addmoney.module.css";
 import { connect } from "react-redux";
 import { addMoney } from "../../Actions/add-money";
+import { getBalance } from "../../Actions/dashboard";
 import { useDispatch } from "react-redux";
 
 function AddMoney(props) {
@@ -9,6 +10,7 @@ function AddMoney(props) {
   const dispatch = useDispatch();
   const onClick = (e) => {
     dispatch(addMoney(props.user.token, amount));
+    dispatch(getBalance(props.user.token));
   };
   return (
     <div className={styles.container}>
